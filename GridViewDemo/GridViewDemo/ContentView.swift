@@ -16,16 +16,25 @@ struct ContentView: View {
     
     var body: some View {
         // Remove Extra parameters
-        ScrollView{
-            LazyVGrid(columns: gridItemLayout, spacing:20) {
+        ScrollView(.horizontal){
+            LazyHGrid(rows: gridItemLayout, spacing:20) {
                 ForEach(profiles, id:\.self){ profile in
                     
                     // Add Images
                     // We have filename you we using name:string function.
                     // Pass profile inside Image
+                    // Below all are the property for Image
+                    // Now adding this image inside VStack and give padding
+                    VStack{
                     Image(profile)
-                    
-                    
+                        .resizable()
+                        .frame(width: 320, height: 320)
+                        .scaledToFit()
+                        .cornerRadius(10.0)
+                    }.padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/, /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                    // Now it's looks little bit nice :)
+                    // You can try adding more property
+                    // This for horizontal collectionview
                 }
             }
         }
